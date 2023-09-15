@@ -1,0 +1,240 @@
+/* paleta de Colores
+gris claro: #E7E4E3
+amarillo: #EAB354
+verde-grisaceo: #5F787B
+gris oscuro: #262B2B
+negro: #0D1011
+*/
+
+/* Estilos generales */
+body{
+  background-color: #262B2B;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  text-align: center;
+  padding: 0px;
+  margin: 0px;
+
+}
+
+.layout{
+  width: 100%;
+  height: auto;
+
+  /* organizar elementos - relacion grid-template-area 
+  dividimos por parte cada clase padre, cada clase tiene su grid-area
+
+  */
+  display:grid;
+  grid-template-areas: 
+  "header header header header"
+  "nav nav nav nav"
+  "content content content lateral"
+  "footer footer footer footer";
+
+  /* Definir la altura de la filas, header:100px, nav:70px, lateral:auto
+  footer 70px
+  */
+  grid-template-rows: 100px 70px auto 70px;
+}
+
+/* ESTILOS CABECERA */
+.header{
+  grid-area: header;
+  background: #E7E4E3;
+  text-align: left;
+  font-style: italic;
+/* Flex-box para colocar elemento en el centro */
+  display: flex;
+  justify-content: center;
+}
+
+.logo{
+  background: linear-gradient(90deg, #0D1011 10%, #E7E4E3 100%);
+  width: 40px;
+  height: 40px;
+  border-radius: 300px;
+  margin-top: 30px;
+  /* Flex box  */
+  display: flex;
+}
+.play{
+  
+      width: 0;
+      height: 0;
+      margin-top: 15px;
+      margin-left: 16px;
+      border-left: 12px solid #EAB354;
+      border-top: 6px solid transparent;
+      border-bottom: 6px solid transparent;
+  
+}
+
+.plus{
+  color: #EAB354;
+  display:contents;
+  justify-content: center;
+  width: 0;
+  height: 0;
+  
+}
+@media (prefers-reduced-motion: no-preference) {
+  .logo {
+      animation: App-logo-spin infinite 2s linear;
+  }
+}
+@keyframes App-logo-spin {
+  from {
+    transform: rotateX(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+.header h1{
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-top: 30px;
+
+}
+
+/* ESTILOS BARRA NAVEGACION */
+.nav{
+  grid-area: nav;
+  background: linear-gradient(90deg, #0D1011 10%, #5F787B 100%);
+}
+
+
+.nav > ul{
+  /* uno al lado del otro */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+}
+.nav li{
+  /* separar verticalmente los elementos de la lista */
+  padding: 10px;
+}
+.nav a {
+  display: block;
+  margin-left: 30px;
+  margin-right: 30px;
+  font-size: 18px;
+  font-weight: lighter;
+  color: #EAB354;
+  text-decoration: none;
+  transition: all 300ms;
+}
+.nav a:hover {
+  transform: scale(1.1, 1.1);
+}
+
+/* ESTILOS PARA EL CONTENIDO PRINCIPAL */
+.content{
+  grid-area: content;
+  background: #E7E4E3;
+
+  display: flex;
+  /* formato de fila wrap: cuando los elementos sobresalgan 
+  del espacio que tiene disponible utilicen otra fila*/
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.peli-item{
+  /* flex grow loa elementos ocupan el máximo del espacio
+  es una de las propiedades que tiene asignadas display flex */
+  flex-grow: 1;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0px 0px 6px #5F787B;
+  margin: 20px;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+button,
+input[type="submit"],
+input[type="button"]{
+  width: 100px;
+  background: linear-gradient(160deg, #EAB354 0%, #E7E4E3 99%);
+  border: 0;
+  outline: 0;
+  padding: 15px;
+  border-radius: 3px;
+  margin-top: 15px;
+  /* Text Transform capitalize Primera letra en Mayúscula */
+  text-transform: capitalize; 
+  font-size: 16px;
+  font-weight: 500px;
+  cursor: pointer;
+  transition: all 300ms;
+}
+.peli-item .edit{
+  margin-right: 7px;
+}
+
+.peli-item .edit:hover{
+  background: #EAB354
+}
+.peli-item .borrar:hover{
+  background: #D44A1E;
+
+}
+.lateral{
+  grid-area: lateral;
+  background: white;
+  border-left: 1px solid #5F787B;
+  padding: 20px;
+}
+.lateral > div{
+  /* para que no sobrepase el contenido la barra lateral */
+  box-sizing: border-box;
+  width: 90%;
+  margin: 20px;
+  padding: 20px;
+  padding-top: 10px;
+  background-color: #E7E4E3;
+  border-radius: 10px;
+  box-shadow: 0px 0px 6px #5F787B;
+}
+.lateral input[type="text"],
+.lateral input[type="text"],
+.lateral textarea{
+  display: block;
+  /* para que cada uno de los elemento se centre */
+  margin: 0 auto;
+  margin-top: 15px;
+  padding: 12px;
+  border-radius: 5px;
+  background: #f6f7f9;
+  color: #5F787B;
+  width: 80%;
+  opacity: 4;
+  outline: 0;
+  border-color: transparent;
+}
+/* ESTILOS PARA EL PIE DE PAGINA */
+.footer{
+  grid-area: footer;
+
+  background: #262B2B;
+  color: #EAB354;
+  border-top: 1px solid white;
+  text-align: left;
+  line-height: 68px;
+  padding-left: 25px;
+}
+.footer a{
+  color: #E7E4E3;
+  text-decoration: none;
+}
+
+.no-encontrado{
+  color: red;
+}
